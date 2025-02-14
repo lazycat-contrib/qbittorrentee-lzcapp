@@ -31,7 +31,7 @@ application:
       service: qbittorrentee
 services:
   qbittorrentee:
-    image: registry.lazycat.cloud/czyt/rogunt/qbittorrentee:da1c94111f2a5257
+    image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:bce1107865951f63
     environment:
       - PUID=1000
       - PGID=1000

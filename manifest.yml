@@ -1,7 +1,7 @@
 lzc-sdk-version: "0.1"
 name: qBittorrent Enhanced Edition
 package: cloud.lazycat.app.qbittorrentee
-version: 5.0.5.10
+version: 5.0.5
 description: qBittorrent社区增强版
 homepage: https://github.com/czyt/Docker-qBittorrent-Enhanced-Edition
 author: czyt

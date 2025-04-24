@@ -1,10 +1,10 @@
 lzc-sdk-version: "0.1"
 name: qBittorrent Enhanced Edition
 package: cloud.lazycat.app.qbittorrentee
-version: 5.0.3
+version: 5.0.5.10
 description: qBittorrent社区增强版
-homepage: https://github.com/c0re100/qBittorrent-Enhanced-Edition
-author: c0re100
+homepage: https://github.com/czyt/Docker-qBittorrent-Enhanced-Edition
+author: czyt
 application:
   subdomain: qbittorrentee
   background_task: true
@@ -19,7 +19,7 @@ application:
     actions:
       open: /open?file=%u
   routes:
-    - /=http://qbittorrentee.cloud.lazycat.app.qbittorrentee.lzcapp:8080/
+    - /=http://qbittorrentee:8080/
   public_path:
     - /
   ingress:
@@ -31,13 +31,14 @@ application:
       service: qbittorrentee
 services:
   qbittorrentee:
-    image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:bce1107865951f63
+    image: docker.1ms.run/czyt/qbittorrentee:5.0.5.10
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Shanghai
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
+      - ENABLE_DOWNLOADS_PERM_FIX=true
 
     binds:
       - /lzcapp/var/config:/config

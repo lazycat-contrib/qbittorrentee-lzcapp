@@ -1,7 +1,7 @@
 lzc-sdk-version: "0.1"
 name: qBittorrent Enhanced Edition
 package: cloud.lazycat.app.qbittorrentee
-version: 5.1.2
+version: 5.1.3
 description: qBittorrent社区增强版
 homepage: https://github.com/docker-x/Docker-qBittorrent-Enhanced-Edition
 author: czyt
@@ -31,7 +31,8 @@ application:
           service: qbittorrentee
 services:
     qbittorrentee:
-        image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:44050f4456327133
+        # czyt/qbittorrentee:5.1.2.10
+        image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:093c7fd452fbb0b8
         environment:
             - PUID=1000
             - PGID=1000

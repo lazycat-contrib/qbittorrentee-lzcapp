@@ -8,7 +8,6 @@ author: czyt
 application:
     subdomain: qbittorrentee
     background_task: true
-    multi_instance: true
     file_handler:
         mime:
             - application/x-magnet
@@ -40,7 +39,7 @@ services:
 
         binds:
             - /lzcapp/var/config:/config
-            - /lzcapp/document/下载:/downloads
+            - /lzcapp/var/downloads:/downloads
 
 ext_config:
     enable_document_access: true

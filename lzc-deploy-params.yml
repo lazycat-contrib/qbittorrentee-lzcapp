@@ -1,0 +1,12 @@
+params:
+    - id: enable_muti_instance_deploy
+      type: bool
+      name: "enable muti instance"
+      default_value: false
+      description: "when enabled ,deploy the app in muti instance.data will store under user data dir,named Downloads"
+
+locales:
+    zh:
+        enable_muti_instance_deploy:
+            name: "启用多实例部署"
+            description: "使用多实例部署当前程序，多实例部署时，数据放在用户目录下的下载目录"

@@ -3,7 +3,7 @@ name: qBittorrent Enhanced Edition
 package: cloud.lazycat.app.qbittorrentee
 version: 5.1.3
 description: qBittorrent社区增强版
-homepage: https://github.com/docker-x/Docker-qBittorrent-Enhanced-Edition
+homepage: https://github.com/dockers-x/Docker-qBittorrent-Enhanced-Edition
 author: czyt
 application:
     subdomain: qbittorrentee

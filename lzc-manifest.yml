@@ -1,7 +1,9 @@
 application:
   subdomain: qbittorrentee
   background_task: true
-  multi_instance: {{if .U.enable_multi_instance}}true{{else}}false{{end}}
+{{if .U.enable_multi_instance}}
+  multi_instance: true
+{{end}}
   file_handler:
     mime:
       - application/x-magnet

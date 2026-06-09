@@ -1,0 +1,45 @@
+application:
+  subdomain: qbittorrentee
+  background_task: true
+  multi_instance: {{if .U.enable_multi_instance}}true{{else}}false{{end}}
+  file_handler:
+    mime:
+      - application/x-magnet
+      - application/x-bittorrent
+    actions:
+      open: /open?file=%u
+  upstreams:
+    - location: /
+      backend: http://qbittorrentee:8080/
+  public_path:
+    - /
+  ingress:
+    - protocol: tcp
+      port: 6881
+      service: qbittorrentee
+    - protocol: udp
+      port: 6881
+      service: qbittorrentee
+
+
+services:
+  qbittorrentee:
+    # czyt/qbittorrentee:5.2.1.10
+    image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:0392e3699ef80a18
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+      - ENABLE_DOWNLOADS_PERM_FIX=true
+    binds:
+      - /lzcapp/var/config:/config
+{{if .U.enable_multi_instance}}
+      - /lzcapp/run/mnt/home/{{.U.download_dir_name}}:/downloads
+{{else}}
+      - /lzcapp/var/downloads:/downloads
+{{end}}
+ext_config:
+  enable_document_access: true
+  enable_media_access: true

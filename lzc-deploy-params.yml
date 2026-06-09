@@ -1,12 +1,30 @@
 params:
-    - id: enable_muti_instance_deploy
-      type: bool
-      name: "enable muti instance"
-      default_value: false
-      description: "when enabled ,deploy the app in muti instance.data will store under user data dir,named Downloads"
+  - id: enable_multi_instance
+    type: bool
+    name: "Enable Multi Instance"
+    default_value: false
+    description: "When enabled, deploy in multi instance mode. Downloads will be stored under user's document directory"
+
+  - id: download_dir_name
+    type: string
+    name: "Download Directory Name"
+    description: "Downloads will be stored in this directory under user's document folder. Default is 'Downloads'"
+    default_value: "Downloads"
+    optional: true
 
 locales:
-    zh:
-        enable_muti_instance_deploy:
-            name: "启用多实例部署"
-            description: "使用多实例部署当前程序，多实例部署时，数据放在用户目录下的下载目录"
+  zh:
+    enable_multi_instance:
+      name: "启用多实例部署"
+      description: "启用后，下载文件将存放在用户文稿目录下"
+    download_dir_name:
+      name: "下载目录名称"
+      description: "下载文件将存放在用户文稿目录下的此子目录中，默认为 Downloads"
+
+  en:
+    enable_multi_instance:
+      name: "Enable Multi Instance"
+      description: "When enabled, downloads will be stored under user's document directory"
+    download_dir_name:
+      name: "Download Directory Name"
+      description: "Downloads will be stored in this directory under user's document folder. Default is 'Downloads'"

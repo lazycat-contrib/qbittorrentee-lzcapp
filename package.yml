@@ -20,3 +20,4 @@ permissions:
     - net.internet
     - document.read
     - document.write
+    - document.private

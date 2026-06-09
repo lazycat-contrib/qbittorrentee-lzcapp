@@ -1,9 +1,9 @@
 application:
   subdomain: qbittorrentee
   background_task: true
-{{if .U.enable_multi_instance}}
+{{ if .U.enable_multi_instance }}
   multi_instance: true
-{{end}}
+{{ end }}
   file_handler:
     mime:
       - application/x-magnet
@@ -37,11 +37,11 @@ services:
       - ENABLE_DOWNLOADS_PERM_FIX=true
     binds:
       - /lzcapp/var/config:/config
-{{if .U.enable_multi_instance}}
+{{ if .U.enable_multi_instance }}
       - /lzcapp/run/mnt/home/{{.U.download_dir_name}}:/downloads
-{{else}}
+{{ else }}
       - /lzcapp/var/downloads:/downloads
-{{end}}
+{{ end }}
 ext_config:
   enable_document_access: true
   enable_media_access: true

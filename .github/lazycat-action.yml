@@ -1,0 +1,47 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/qbittorrentee.lpk
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: qbittorrentee
+
+build:
+  run_buildscript: false
+
+images:
+  - id: qbittorrentee
+    target: service
+    service: qbittorrentee
+    source: czyt/qbittorrentee
+    channel: custom
+    sort: semver
+    tag_regex: '^\d+\.\d+\.\d+\.\d+$'
+    version_regex: '^(?P<version>\d+\.\d+\.\d+)\.(?P<build>\d+)$'
+    version_template: '{version}{build}'
+    delivery:
+      mode: lazycat
+
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+    create_if_missing: true
+    changelog_locales: [zh, en]
+    application:
+      language: zh
+      name: qBittorrent Enhanced Edition
+      source: https://github.com/dockers-x/Docker-qBittorrent-Enhanced-Edition
+      source_author: dockers-x
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: qBittorrent Enhanced Edition
+    summary: qBittorrent 社区增强版的 LazyCat 自动构建版本

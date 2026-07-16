@@ -22,11 +22,10 @@ application:
     - protocol: udp
       port: 6881
       service: qbittorrentee
-
-
 services:
   qbittorrentee:
     # czyt/qbittorrentee:5.2.1.10
+    # upstream: czyt/qbittorrentee:5.2.1.10
     image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:0392e3699ef80a18
     environment:
       - PUID=1000

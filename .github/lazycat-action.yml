@@ -24,7 +24,7 @@ images:
     channel: custom
     sort: semver
     tag_regex: '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'
-    version_regex: '^(?P<version>[0-9]+\.[0-9]+)\.(?P<patch>[0-9]+)\.(?P<build>[0-9]+)$'
+    version_regex: '^(?P<version>[0-9]+\.[0-9]+)\.(?:0|(?P<patch>[1-9][0-9]*))\.(?P<build>[0-9]+)$'
     version_template: '{version}.{patch}{build}'
     delivery:
       mode: lazycat

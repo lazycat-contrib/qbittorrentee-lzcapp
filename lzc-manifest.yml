@@ -25,8 +25,8 @@ application:
 services:
   qbittorrentee:
     # czyt/qbittorrentee:5.2.1.10
-    # upstream: czyt/qbittorrentee:5.2.1.10
-    image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:0392e3699ef80a18
+    # upstream: czyt/qbittorrentee:5.2.3.10
+    image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:7475237de648b4f0
     environment:
       - PUID=1000
       - PGID=1000

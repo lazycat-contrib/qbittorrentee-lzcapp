@@ -20,7 +20,7 @@ images:
   - id: qbittorrentee
     target: service
     service: qbittorrentee
-    source: czyt/qbittorrentee
+    source: superng6/qbittorrentee
     channel: custom
     sort: semver
     tag_regex: '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'

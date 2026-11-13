@@ -58,10 +58,7 @@ services:
     binds:
       - /lzcapp/var/config:/config
 {{ if .U.enable_multi_instance }}
-{{ with (default "Downloads" .U.download_dir_name) }}
-      - >-
-        /lzcapp/documents/{{ $.S.DeployUID }}/{{ if or (eq . ".") (eq . "..") (contains "/" .) (contains "\\" .) (contains ":" .) (contains "\n" .) (contains "\r" .) }}{{ fail "download_dir_name must be a single directory name, not a path" }}{{ end }}{{ . }}:/downloads
-{{ end }}
+      - /lzcapp/documents/{{ $.S.DeployUID }}:/downloads
 {{ else }}
       - /lzcapp/var/downloads:/downloads
 {{ end }}

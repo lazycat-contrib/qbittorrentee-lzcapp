@@ -24,12 +24,12 @@ application:
       service: qbittorrentee
 services:
   qbittorrentee:
-    # upstream: superng6/qbittorrentee:5.2.4.10
-    image: registry.lazycat.cloud/czyt/superng6/qbittorrentee:d9ce0a4d68c90f8e
+    # czyt/qbittorrentee:5.2.1.10
+    # upstream: czyt/qbittorrentee:5.2.3.10
+    image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:7475237de648b4f0
     environment:
       - PUID=1000
       - PGID=1000
-      - WEB_PASSWORD=adminadmin
       - TZ=Asia/Shanghai
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
@@ -37,7 +37,7 @@ services:
     binds:
       - /lzcapp/var/config:/config
 {{ if .U.enable_multi_instance }}
-      - /lzcapp/run/mnt/home/{{.U.download_dir_name}}:/downloads
+      - /lzcapp/documents/{{.U.download_dir_name}}:/downloads
 {{ else }}
       - /lzcapp/var/downloads:/downloads
 {{ end }}

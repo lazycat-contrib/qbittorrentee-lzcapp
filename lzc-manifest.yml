@@ -54,8 +54,4 @@ services:
         WEBUI_PASSWORD={{ default "adminadmin" .U.login_password }}
     binds:
       - /lzcapp/var/config:/config
-{{ if .U.enable_multi_instance }}
       - /lzcapp/documents/{{ .S.DeployUID }}:/downloads
-{{ else }}
-      - /lzcapp/var/downloads:/downloads
-{{ end }}

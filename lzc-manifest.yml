@@ -13,8 +13,27 @@ application:
   upstreams:
     - location: /
       backend: http://qbittorrentee:8080/
+{{ if .U.enable_auto_login }}
+  injects:
+    - id: login-autofill
+      on: browser
+      when:
+        - /
+      do:
+        - src: builtin://simple-inject-password
+          params:
+            user: >-
+              {{ default "admin" .U.login_user }}
+            password: >-
+              {{ default "adminadmin" .U.login_password }}
+            userSelector: "#username"
+            passwordSelector: "#password"
+            submitSelector: "#loginButton"
+            autoSubmit: true
+{{ else }}
   public_path:
     - /
+{{ end }}
   ingress:
     - protocol: tcp
       port: 6881
@@ -24,23 +43,24 @@ application:
       service: qbittorrentee
 services:
   qbittorrentee:
-    # czyt/qbittorrentee:5.2.1.10
-    # upstream: czyt/qbittorrentee:5.2.3.10
-    image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:7475237de648b4f0
+    image: czyt/qbittorrentee:5.2.4.10-r1
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=Asia/Shanghai
-      - WEBUI_PORT=8080
-      - TORRENTING_PORT=6881
-      - ENABLE_DOWNLOADS_PERM_FIX=true
+      - WEBUIPORT=8080
+      - RUN_AS_ROOT=true
+      - ENABLE_CONFIG_PERM_FIX=false
+      - ENABLE_DOWNLOADS_PERM_FIX=false
+      - >-
+        WEBUI_USERNAME={{ default "admin" .U.login_user }}
+      - >-
+        WEBUI_PASSWORD={{ default "adminadmin" .U.login_password }}
     binds:
       - /lzcapp/var/config:/config
 {{ if .U.enable_multi_instance }}
-      - /lzcapp/documents/{{.U.download_dir_name}}:/downloads
+{{ with (default "Downloads" .U.download_dir_name) }}
+      - >-
+        /lzcapp/documents/{{ $.S.DeployUID }}/{{ if or (eq . ".") (eq . "..") (contains "/" .) (contains "\\" .) (contains ":" .) (contains "\n" .) (contains "\r" .) }}{{ fail "download_dir_name must be a single directory name, not a path" }}{{ end }}{{ . }}:/downloads
+{{ end }}
 {{ else }}
       - /lzcapp/var/downloads:/downloads
 {{ end }}
-ext_config:
-  enable_document_access: true
-  enable_media_access: true

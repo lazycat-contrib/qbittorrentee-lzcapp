@@ -1,4 +1,22 @@
 params:
+  - id: enable_auto_login
+    type: bool
+    name: "Enable Automatic Login"
+    description: "Automatically log in using the username and password configured below; requires LazyCat authentication"
+    default_value: true
+
+  - id: login_user
+    type: string
+    name: "Login Username"
+    description: "WebUI username, reapplied at every container start"
+    default_value: "admin"
+
+  - id: login_password
+    type: secret
+    name: "Login Password"
+    description: "WebUI password, reapplied at every container start"
+    default_value: "adminadmin"
+
   - id: enable_multi_instance
     type: bool
     name: "Enable Multi Instance"
@@ -14,6 +32,15 @@ params:
 
 locales:
   zh:
+    enable_auto_login:
+      name: "启用自动登录"
+      description: "使用下方设置的用户名和密码自动登录；启用时必须先通过懒猫身份认证"
+    login_user:
+      name: "登录用户名"
+      description: "每次容器启动时应用此用户名，请在这里修改而非 WebUI 中修改"
+    login_password:
+      name: "登录密码"
+      description: "每次容器启动时应用此密码，建议替换默认密码 adminadmin；无需查看终端日志"
     enable_multi_instance:
       name: "启用多实例部署"
       description: "启用后，下载文件将存放在用户文稿目录下"
@@ -22,6 +49,15 @@ locales:
       description: "下载文件将存放在用户文稿目录下的此子目录中，默认为 Downloads"
 
   en:
+    enable_auto_login:
+      name: "Enable Automatic Login"
+      description: "Use the configured credentials to log in automatically after LazyCat authentication"
+    login_user:
+      name: "Login Username"
+      description: "WebUI username, reapplied at every container start"
+    login_password:
+      name: "Login Password"
+      description: "WebUI password, reapplied at every container start; change the default adminadmin"
     enable_multi_instance:
       name: "Enable Multi Instance"
       description: "When enabled, downloads will be stored under user's document directory"

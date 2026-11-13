@@ -16,6 +16,4 @@ locales:
 permissions:
   required:
     - net.internet
-    - document.read
-    - document.write
     - document.private

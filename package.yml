@@ -13,7 +13,10 @@ locales:
   en:
     name: "qBittorrent Enhanced Edition"
     description: "qBittorrent community enhanced edition with auto-ban for Thunder/QQ/Baidu clients"
+
 permissions:
   required:
     - net.internet
+    - document.read
     - document.private
+    - document.write

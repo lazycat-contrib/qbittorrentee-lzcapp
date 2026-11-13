@@ -1,9 +1,7 @@
 application:
   subdomain: qbittorrentee
   background_task: true
-{{ if .U.enable_multi_instance }}
-  multi_instance: true
-{{ end }}
+  multi_instance:  true
   file_handler:
     mime:
       - application/x-magnet
@@ -30,10 +28,9 @@ application:
             passwordSelector: "#password"
             submitSelector: "#loginButton"
             autoSubmit: true
-{{ else }}
+{{ end }}
   public_path:
     - /
-{{ end }}
   ingress:
     - protocol: tcp
       port: 6881
@@ -58,7 +55,7 @@ services:
     binds:
       - /lzcapp/var/config:/config
 {{ if .U.enable_multi_instance }}
-      - /lzcapp/documents/{{ $.S.DeployUID }}:/downloads
+      - /lzcapp/documents/{{ .S.DeployUID }}:/downloads
 {{ else }}
       - /lzcapp/var/downloads:/downloads
 {{ end }}

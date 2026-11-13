@@ -17,12 +17,6 @@ params:
     description: "WebUI password, reapplied at every container start"
     default_value: "adminadmin"
 
-  - id: enable_multi_instance
-    type: bool
-    name: "Enable Multi Instance"
-    default_value: false
-    description: "When enabled, deploy in multi instance mode. Downloads will be stored under user's document directory"
-
 
 locales:
   zh:
@@ -35,9 +29,6 @@ locales:
     login_password:
       name: "登录密码"
       description: "每次容器启动时应用此密码，建议替换默认密码 adminadmin；无需查看终端日志"
-    enable_multi_instance:
-      name: "启用多实例部署"
-      description: "启用后，下载文件将存放在用户文稿目录下"
 
   en:
     enable_auto_login:
@@ -49,6 +40,3 @@ locales:
     login_password:
       name: "Login Password"
       description: "WebUI password, reapplied at every container start; change the default adminadmin"
-    enable_multi_instance:
-      name: "Enable Multi Instance"
-      description: "When enabled, downloads will be stored under user's document directory"

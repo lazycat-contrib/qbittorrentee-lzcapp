@@ -16,7 +16,12 @@ params:
     name: "Login Password"
     description: "WebUI password, reapplied at every container start"
     default_value: "adminadmin"
-
+  - id: download_dir_name
+    type: string
+    name: "Download Directory Name"
+    description: "A single directory name for downloads; defaults to Downloads. Changing it does not move existing files."
+    default_value: "Downloads"
+    optional: true
 
 locales:
   zh:
@@ -29,6 +34,9 @@ locales:
     login_password:
       name: "登录密码"
       description: "每次容器启动时应用此密码，建议替换默认密码 adminadmin；无需查看终端日志"
+    download_dir_name:
+      name: "下载目录名称"
+      description: "下载文件夹名称，默认 Downloads，只允许单层目录名；修改后不会自动迁移旧文件"
 
   en:
     enable_auto_login:
@@ -40,3 +48,6 @@ locales:
     login_password:
       name: "Login Password"
       description: "WebUI password, reapplied at every container start; change the default adminadmin"
+    download_dir_name:
+      name: "Download Directory Name"
+      description: "A single directory name for downloads; defaults to Downloads. Changing it does not move existing files."

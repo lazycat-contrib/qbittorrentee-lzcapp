@@ -44,4 +44,4 @@ stores:
     enabled: true
     skip_if_version_exists: true
     name: qBittorrent Enhanced Edition
-    summary: qBittorrent 社区增强版的 LazyCat 自动构建版本
+    summary: qBittorrent 社区增强版，单实例，所有用户共用同一个实例

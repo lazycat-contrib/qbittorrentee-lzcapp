@@ -1,7 +1,7 @@
 application:
   subdomain: qbittorrentee
   background_task: true
-  multi_instance:  true
+  multi_instance: false
   file_handler:
     mime:
       - application/x-magnet
@@ -28,9 +28,10 @@ application:
             passwordSelector: "#password"
             submitSelector: "#loginButton"
             autoSubmit: true
-{{ end }}
+{{ else }}
   public_path:
     - /
+{{ end }}
   ingress:
     - protocol: tcp
       port: 6881
@@ -54,4 +55,7 @@ services:
         WEBUI_PASSWORD={{ default "adminadmin" .U.login_password }}
     binds:
       - /lzcapp/var/config:/config
-      - /lzcapp/documents/{{ .S.DeployUID }}:/downloads
+{{ with (default "Downloads" .U.download_dir_name) }}
+      - >-
+        {{ if or (eq . ".") (eq . "..") (contains "/" .) (contains "\\" .) (contains ":" .) (contains "$" .) (contains "\n" .) (contains "\r" .) }}{{ fail "download_dir_name must be a single directory name, not a path" }}{{ end }}/lzcapp/var/downloads/{{ . }}:/downloads
+{{ end }}

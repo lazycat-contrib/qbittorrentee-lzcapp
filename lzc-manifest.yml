@@ -28,10 +28,10 @@ application:
             passwordSelector: "#password"
             submitSelector: "#loginButton"
             autoSubmit: true
-{{ else }}
+{{ end }}
   public_path:
     - /
-{{ end }}
+
   ingress:
     - protocol: tcp
       port: 6881

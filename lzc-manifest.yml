@@ -43,7 +43,8 @@ application:
       service: qbittorrentee
 services:
   qbittorrentee:
-    image: czyt/qbittorrentee:5.2.4.10-r1
+    # upstream: czyt/qbittorrentee:5.2.4.10-r1
+    image: registry.lazycat.cloud/czyt/czyt/qbittorrentee:e82730ede1aa53cf
     environment:
       - TZ=Asia/Shanghai
       - WEBUIPORT=8080

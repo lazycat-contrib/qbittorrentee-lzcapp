@@ -38,8 +38,8 @@ stores:
     application:
       language: zh
       name: qBittorrent Enhanced Edition
-      source: https://github.com/dockers-x/Docker-qBittorrent-Enhanced-Edition
-      source_author: dockers-x
+      source: https://github.com/SuperNG6/Docker-qBittorrent-Enhanced-Edition
+      source_author: SuperNG6
   private:
     enabled: true
     skip_if_version_exists: true

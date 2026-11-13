@@ -37,7 +37,7 @@ services:
     binds:
       - /lzcapp/var/config:/config
 {{ if .U.enable_multi_instance }}
-      - /lzcapp/documents/{{.U.download_dir_name}}:/downloads
+      - /lzcapp/run/mnt/home/{{.U.download_dir_name}}:/downloads
 {{ else }}
       - /lzcapp/var/downloads:/downloads
 {{ end }}
